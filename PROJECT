@@ -3,4 +3,14 @@ layout:
 - go.kubebuilder.io/v3
 projectName: my-operator
 repo: github.com/hustjieke/my-operator
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: radondb
+  group: radondb
+  kind: Cluster
+  path: github.com/hustjieke/my-operator/api/v1
+  version: v1
 version: "3"
