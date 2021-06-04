@@ -1,0 +1,6 @@
+domain: radondb
+layout:
+- go.kubebuilder.io/v3
+projectName: my-operator
+repo: github.com/hustjieke/my-operator
+version: "3"
