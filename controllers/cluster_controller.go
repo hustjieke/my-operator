@@ -18,6 +18,7 @@ package controllers
 
 import (
 	"context"
+	"fmt"
 
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
@@ -50,6 +51,21 @@ func (r *ClusterReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 	_ = log.FromContext(ctx)
 
 	// your logic here
+
+	// 1. Print Spec.Detail and Status.Created in log
+	obj := &radondbv1.Cluster{}
+	if err := r.Get(ctx, req.NamespacedName, obj); err != nil {
+		fmt.Errorf("couldn't find object:%s", req.String())
+	} else {
+		// 打印Detail和Created
+		fmt.Println("Successfully get detail Detail: \n", obj.Spec.Detail)
+		fmt.Println("Created: \n", obj.Status.Created)
+	}
+	// 2. Change Created
+	if !obj.Status.Created {
+		obj.Status.Created = true
+		r.Update(ctx, obj)
+	}
 
 	return ctrl.Result{}, nil
 }

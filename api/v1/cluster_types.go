@@ -30,12 +30,18 @@ type ClusterSpec struct {
 
 	// Foo is an example field of Cluster. Edit cluster_types.go to remove/update
 	Foo string `json:"foo,omitempty"`
+
+	// add by gry for test
+	Detail string `json:"detail,omitempty"`
 }
 
 // ClusterStatus defines the observed state of Cluster
 type ClusterStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+
+	// add by gry for test
+	Created bool `json:"created,omitempy"`
 }
 
 //+kubebuilder:object:root=true
